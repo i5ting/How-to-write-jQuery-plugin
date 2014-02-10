@@ -701,6 +701,7 @@ jquery_plugin/plugin_four
 
 ## 使用grunt创建项目
 
+grunt是基于任务的构建工具，和make，rake，ant，cake，maven，gradle等是一样的
 
 ### 前置条件
 
@@ -711,8 +712,13 @@ jquery_plugin/plugin_four
 	git clone https://github.com/gruntjs/grunt-init-jquery.git ~/.grunt-init/jquery	
 	grunt-init jquery 
 
+如果是万恶的window系统，请修改:
 
-如果是linux或者mac，使用-g安装的时候可能需要sudo权限，具体自己看日志
+	git clone https://github.com/gruntjs/grunt-init-jquery.git %USERPROFILE%/.grunt-init/jquery
+
+
+另外如果是linux或者mac，使用-g安装的时候可能需要sudo权限，具体自己看日志
+
 ### 创建项目
 
 	➜  jquery_plugin git:(master) ✗ mkdir plugin_grunt     
@@ -786,10 +792,14 @@ jquery_plugin/plugin_four
 	
 	➜  plugin_grunt git:(master) npm install
 
+qunit 依赖phantomjs，需要翻墙，自备梯子
 
-###
-qunit 依赖phantomjs，需要翻墙
+### 测试
 
+	grunt
+	grunt qunit
+
+通过就可以。
 
 ## 如何发布到jquery plugin官方网站上
 
