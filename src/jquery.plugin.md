@@ -702,6 +702,8 @@ jquery_plugin/plugin_four
 ## 使用grunt创建项目
 
 
+### 前置条件
+
 前置条件需要有nodejs和npm，请确保已安装成功：
 
 	npm install -g grunt
@@ -711,7 +713,7 @@ jquery_plugin/plugin_four
 
 
 如果是linux或者mac，使用-g安装的时候可能需要sudo权限，具体自己看日志
-
+### 创建项目
 
 	➜  jquery_plugin git:(master) ✗ mkdir plugin_grunt     
 	➜  jquery_plugin git:(master) ✗ cd plugin_grunt 
@@ -778,8 +780,15 @@ jquery_plugin/plugin_four
 	➜  plugin_grunt git:(master) ✗ 
 
 
+### 安装依赖
 
-### 关于
+切换到plugin_grunt根目录，通过下面命令安装grunt依赖的包
+	
+	➜  plugin_grunt git:(master) npm install
+
+
+###
+qunit 依赖phantomjs，需要翻墙
 
 
 ## 如何发布到jquery plugin官方网站上
