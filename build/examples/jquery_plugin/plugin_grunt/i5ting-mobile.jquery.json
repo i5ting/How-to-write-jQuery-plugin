@@ -1,0 +1,26 @@
+{
+  "name": "i5ting-mobile",
+  "title": "I5ting Mobile",
+  "description": "this is a test jq plugin",
+  "version": "0.1.0",
+  "homepage": "https://github.com/i5ting/How-to-write-jQuery-plugin",
+  "author": {
+    "name": "i5ting",
+    "email": "i5ting@126.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/i5ting/How-to-write-jQuery-plugin.git"
+  },
+  "bugs": "https://github.com/i5ting/How-to-write-jQuery-plugin/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/i5ting/How-to-write-jQuery-plugin/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
