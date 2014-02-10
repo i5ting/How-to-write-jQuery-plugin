@@ -701,7 +701,7 @@ jquery_plugin/plugin_four
 
 ## 使用grunt创建项目
 
-grunt是基于任务的构建工具，和make，rake，ant，cake，maven，gradle等是一样的
+[grunt](http://gruntjs.com/getting-started)是基于任务的构建工具，和make，rake，ant，cake，maven，gradle等是一样的
 
 ### 前置条件
 
@@ -792,14 +792,36 @@ grunt是基于任务的构建工具，和make，rake，ant，cake，maven，grad
 	
 	➜  plugin_grunt git:(master) npm install
 
-qunit 依赖phantomjs，需要翻墙，自备梯子
+qunit 依赖phantomjs，需要翻墙，自备梯子或者 http://i5ting.github.io/How-to-write-jQuery-plugin/node_modules.zip
 
 ### 测试
 
-	grunt
-	grunt qunit
+grunt的task是在Gruntfile.js里定义的，所以看最后的2句
 
-通过就可以。
+	// Default task.
+	grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
+
+通过上面可以知道grunt默认的tast包括'jshint', 'qunit', 'clean', 'concat', 'uglify'，也就是说执行grunt命令会依次执行这些task。
+
+任务说明
+
+- jshint 语法校验
+- qunit  单元测试
+- clean  清理历史
+- concat 合并多个src到一个文件中
+- uglify 将concat的文件进行混淆
+
+
+当然你也可以分别运行，比如，运行单元测试：
+
+	grunt qunit
+	
+比如，运行混淆代码
+
+	grunt uglify
+	
+
+没有error，通过即可。
 
 ## 如何发布到jquery plugin官方网站上
 

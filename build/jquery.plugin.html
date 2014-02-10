@@ -827,11 +827,118 @@
 
 <h2>使用grunt创建项目</h2>
 
+<p><a href="http://gruntjs.com/getting-started">grunt</a>是基于任务的构建工具，和make，rake，ant，cake，maven，gradle等是一样的</p>
+
+<h3>前置条件</h3>
+
+<p>前置条件需要有nodejs和npm，请确保已安装成功：</p>
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">grunt</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">grunt</span><span class="o">-</span><span class="n">init</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/gruntjs/grunt-init-jquery.git ~/.grunt-init/jquery </span>
+<span class="n">grunt</span><span class="o">-</span><span class="n">init</span> <span class="n">jquery</span> 
+</pre></div>
+<p>如果是万恶的window系统，请修改:</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/gruntjs/grunt-init-jquery.git %USERPROFILE%/.grunt-init/jquery</span>
+</pre></div>
+<p>另外如果是linux或者mac，使用-g安装的时候可能需要sudo权限，具体自己看日志</p>
+
+<h3>创建项目</h3>
+<div class="highlight"><pre><span class="err">➜</span>  <span class="n">jquery_plugin</span> <span class="n">git</span><span class="o">:</span><span class="p">(</span><span class="n">master</span><span class="p">)</span> <span class="err">✗</span> <span class="n">mkdir</span> <span class="n">plugin_grunt</span>     
+<span class="err">➜</span>  <span class="n">jquery_plugin</span> <span class="n">git</span><span class="o">:</span><span class="p">(</span><span class="n">master</span><span class="p">)</span> <span class="err">✗</span> <span class="n">cd</span> <span class="n">plugin_grunt</span> 
+<span class="err">➜</span>  <span class="n">plugin_grunt</span> <span class="n">git</span><span class="o">:</span><span class="p">(</span><span class="n">master</span><span class="p">)</span> <span class="err">✗</span> <span class="n">grunt</span><span class="o">-</span><span class="n">init</span> <span class="n">jquery</span>
+<span class="n">Running</span> <span class="s">&quot;init:jquery&quot;</span> <span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="n">task</span>
+<span class="n">This</span> <span class="n">task</span> <span class="n">will</span> <span class="n">create</span> <span class="n">one</span> <span class="n">or</span> <span class="n">more</span> <span class="n">files</span> <span class="n">in</span> <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span><span class="p">,</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span>
+<span class="n">environment</span> <span class="n">and</span> <span class="n">the</span> <span class="n">answers</span> <span class="n">to</span> <span class="n">a</span> <span class="n">few</span> <span class="n">questions</span><span class="p">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">answering</span> <span class="s">&quot;?&quot;</span> <span class="n">to</span> <span class="n">any</span>
+<span class="n">question</span> <span class="n">will</span> <span class="n">show</span> <span class="n">question</span><span class="o">-</span><span class="n">specific</span> <span class="n">help</span> <span class="n">and</span> <span class="n">answering</span> <span class="s">&quot;none&quot;</span> <span class="n">to</span> <span class="n">most</span> <span class="n">questions</span>
+<span class="n">will</span> <span class="n">leave</span> <span class="n">its</span> <span class="n">value</span> <span class="n">blank</span><span class="p">.</span>
+
+<span class="s">&quot;jquery&quot;</span> <span class="n">template</span> <span class="n">notes</span><span class="o">:</span>
+<span class="n">Project</span> <span class="n">name</span> <span class="n">should</span> <span class="n">not</span> <span class="n">contain</span> <span class="s">&quot;jquery&quot;</span> <span class="n">or</span> <span class="s">&quot;js&quot;</span> <span class="n">and</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">unique</span> <span class="n">ID</span> <span class="n">not</span>
+<span class="n">already</span> <span class="n">in</span> <span class="n">use</span> <span class="n">at</span> <span class="n">plugins</span><span class="p">.</span><span class="n">jquery</span><span class="p">.</span><span class="n">com</span><span class="p">.</span> <span class="n">Project</span> <span class="n">title</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">human</span><span class="o">-</span><span class="n">readable</span>
+<span class="n">title</span><span class="p">,</span> <span class="n">and</span> <span class="n">doesn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">need</span> <span class="n">to</span> <span class="n">contain</span> <span class="n">the</span> <span class="n">word</span> <span class="s">&quot;jQuery&quot;</span><span class="p">,</span> <span class="n">although</span> <span class="n">it</span> <span class="n">may</span><span class="p">.</span> <span class="n">For</span>
+<span class="n">example</span><span class="p">,</span> <span class="n">a</span> <span class="n">plugin</span> <span class="n">titled</span> <span class="s">&quot;Awesome Plugin&quot;</span> <span class="n">might</span> <span class="n">have</span> <span class="n">the</span> <span class="n">name</span> <span class="s">&quot;awesome-plugin&quot;</span><span class="p">.</span>
+
+<span class="n">For</span> <span class="n">more</span> <span class="n">information</span><span class="p">,</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">following</span> <span class="n">documentation</span><span class="o">:</span>
+
+<span class="n">Naming</span> <span class="n">Your</span> <span class="n">Plugin</span>      <span class="n">http</span><span class="o">:</span><span class="c1">//plugins.jquery.com/docs/names/</span>
+<span class="n">Publishing</span> <span class="n">Your</span> <span class="n">Plugin</span>  <span class="n">http</span><span class="o">:</span><span class="c1">//plugins.jquery.com/docs/publish/</span>
+<span class="n">Package</span> <span class="n">Manifest</span>        <span class="n">http</span><span class="o">:</span><span class="c1">//plugins.jquery.com/docs/package-manifest/</span>
+
+<span class="n">Please</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">following</span><span class="o">:</span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Project</span> <span class="n">name</span> <span class="p">(</span><span class="n">plugin_grunt</span><span class="p">)</span> <span class="n">i5ting</span><span class="o">-</span><span class="n">mobile</span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Project</span> <span class="n">title</span> <span class="p">(</span><span class="n">I5ting</span> <span class="n">Mobile</span><span class="p">)</span> 
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Description</span> <span class="p">(</span><span class="n">The</span> <span class="n">best</span> <span class="n">jQuery</span> <span class="n">plugin</span> <span class="n">ever</span><span class="p">.)</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span> <span class="n">jq</span> <span class="n">plugin</span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Version</span> <span class="p">(</span><span class="mf">0.1.0</span><span class="p">)</span> 
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Project</span> <span class="n">git</span> <span class="n">repository</span> <span class="p">(</span><span class="n">git</span><span class="o">:</span><span class="c1">//github.com/i5ting/How-to-write-jQuery-plugin.git) </span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Project</span> <span class="n">homepage</span> <span class="p">(</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/i5ting/How-to-write-jQuery-plugin) </span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Project</span> <span class="n">issues</span> <span class="n">tracker</span> <span class="p">(</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/i5ting/How-to-write-jQuery-plugin/issues) </span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Licenses</span> <span class="p">(</span><span class="n">MIT</span><span class="p">)</span> 
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Author</span> <span class="n">name</span> <span class="p">(</span><span class="n">shiren1118</span><span class="p">)</span> <span class="n">i5ting</span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Author</span> <span class="n">email</span> <span class="p">(</span><span class="n">shiren1118</span><span class="err">@</span><span class="mf">126.</span><span class="n">com</span><span class="p">)</span> <span class="n">i5ting</span><span class="err">@</span><span class="mf">126.</span><span class="n">com</span>
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Author</span> <span class="n">url</span> <span class="p">(</span><span class="n">none</span><span class="p">)</span> 
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Required</span> <span class="n">jQuery</span> <span class="n">version</span> <span class="p">(</span><span class="o">*</span><span class="p">)</span> 
+<span class="p">[</span><span class="o">?</span><span class="p">]</span> <span class="n">Do</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">make</span> <span class="n">any</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">the</span> <span class="n">above</span> <span class="n">before</span> <span class="n">continuing</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> 
+
+<span class="n">Writing</span> <span class="p">.</span><span class="n">gitignore</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="p">.</span><span class="n">jshintrc</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">CONTRIBUTING</span><span class="p">.</span><span class="n">md</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">Gruntfile</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">README</span><span class="p">.</span><span class="n">md</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">libs</span><span class="o">/</span><span class="n">jquery</span><span class="o">-</span><span class="n">loader</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">libs</span><span class="o">/</span><span class="n">jquery</span><span class="o">/</span><span class="n">jquery</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">libs</span><span class="o">/</span><span class="n">qunit</span><span class="o">/</span><span class="n">qunit</span><span class="p">.</span><span class="n">css</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">libs</span><span class="o">/</span><span class="n">qunit</span><span class="o">/</span><span class="n">qunit</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">src</span><span class="o">/</span><span class="p">.</span><span class="n">jshintrc</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">src</span><span class="o">/</span><span class="n">i5ting</span><span class="o">-</span><span class="n">mobile</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">test</span><span class="o">/</span><span class="p">.</span><span class="n">jshintrc</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">test</span><span class="o">/</span><span class="n">i5ting</span><span class="o">-</span><span class="n">mobile</span><span class="p">.</span><span class="n">html</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">test</span><span class="o">/</span><span class="n">i5ting</span><span class="o">-</span><span class="n">mobile_test</span><span class="p">.</span><span class="n">js</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">LICENSE</span><span class="o">-</span><span class="n">MIT</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">package</span><span class="p">.</span><span class="n">json</span><span class="p">...</span><span class="n">OK</span>
+<span class="n">Writing</span> <span class="n">i5ting</span><span class="o">-</span><span class="n">mobile</span><span class="p">.</span><span class="n">jquery</span><span class="p">.</span><span class="n">json</span><span class="p">...</span><span class="n">OK</span>
+
+<span class="n">Initialized</span> <span class="n">from</span> <span class="n">template</span> <span class="s">&quot;jquery&quot;</span><span class="p">.</span>
+<span class="n">You</span> <span class="n">should</span> <span class="n">now</span> <span class="n">install</span> <span class="n">project</span> <span class="n">dependencies</span> <span class="n">with</span> <span class="n">npm</span> <span class="n">install</span><span class="p">.</span> <span class="n">After</span> <span class="n">that</span><span class="p">,</span> <span class="n">you</span>
+<span class="n">may</span> <span class="n">execute</span> <span class="n">project</span> <span class="n">tasks</span> <span class="n">with</span> <span class="n">grunt</span><span class="p">.</span> <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">about</span> <span class="n">installing</span>
+<span class="n">and</span> <span class="n">configuring</span> <span class="n">Grunt</span><span class="p">,</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">Getting</span> <span class="n">Started</span> <span class="n">guide</span><span class="o">:</span>
+
+<span class="nl">http:</span><span class="c1">//gruntjs.com/getting-started</span>
+
+<span class="n">Done</span><span class="p">,</span> <span class="n">without</span> <span class="n">errors</span><span class="p">.</span>
+<span class="err">➜</span>  <span class="n">plugin_grunt</span> <span class="n">git</span><span class="o">:</span><span class="p">(</span><span class="n">master</span><span class="p">)</span> <span class="err">✗</span> 
+</pre></div>
+<h3>安装依赖</h3>
+
+<p>切换到plugin_grunt根目录，通过下面命令安装grunt依赖的包</p>
+<div class="highlight"><pre><span class="err">➜</span>  <span class="n">plugin_grunt</span> <span class="n">git</span><span class="o">:</span><span class="p">(</span><span class="n">master</span><span class="p">)</span> <span class="n">npm</span> <span class="n">install</span>
+</pre></div>
+<p>qunit 依赖phantomjs，需要翻墙，自备梯子或者 <a href="http://i5ting.github.io/How-to-write-jQuery-plugin/node_modules.zip">http://i5ting.github.io/How-to-write-jQuery-plugin/node_modules.zip</a></p>
+
+<h3>测试</h3>
+
+<p>grunt的task是在Gruntfile.js里定义的，所以看最后的2句</p>
+<div class="highlight"><pre><span class="c1">// Default task.</span>
+<span class="n">grunt</span><span class="p">.</span><span class="n">registerTask</span><span class="p">(&#39;</span><span class="k">default</span><span class="p">&#39;,</span> <span class="p">[&#39;</span><span class="n">jshint</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">qunit</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">clean</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">concat</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">uglify</span><span class="p">&#39;]);</span>
+</pre></div>
+<p>通过上面可以知道grunt默认的tast包括&#39;jshint&#39;, &#39;qunit&#39;, &#39;clean&#39;, &#39;concat&#39;, &#39;uglify&#39;，也就是说执行grunt命令会依次执行这些task。</p>
+
+<p>任务说明</p>
+
 <ul>
-<li><a href="https://github.com/gruntjs/grunt-init-jquery-sample/blob/master/grunt.js">Sample jQuery plugin gruntfile</a> (as generated by the <code>init:jquery</code> task)</li>
+<li>jshint 语法校验</li>
+<li>qunit  单元测试</li>
+<li>clean  清理历史</li>
+<li>concat 合并多个src到一个文件中</li>
+<li>uglify 将concat的文件进行混淆</li>
 </ul>
 
-<p>grunt init:jquery </p>
+<p>当然你也可以分别运行，比如，运行单元测试：</p>
+<div class="highlight"><pre><span class="n">grunt</span> <span class="n">qunit</span>
+</pre></div>
+<p>比如，运行混淆代码</p>
+<div class="highlight"><pre><span class="n">grunt</span> <span class="n">uglify</span>
+</pre></div>
+<p>没有error，通过即可。</p>
 
 <h2>如何发布到jquery plugin官方网站上</h2>
 
