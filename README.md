@@ -38,7 +38,6 @@ then open build/jquery.plugin.html
 ## 版本历史
 
 - v0.1.0 初始化版本 
-- v0.2.0 支持正文滚动，同时更新ztree
 
 
 ## 作者
