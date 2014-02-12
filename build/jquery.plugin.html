@@ -491,7 +491,46 @@
 <div class="highlight"><pre><span class="c1">// 将defaults 和 options 参数合并到{}</span>
 <span class="k">var</span> <span class="n">obj</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 </pre></div>
-<h3>select和$.fn</h3>
+<p>给每个对象增加$(obj)属于防御性写法，保证对象一定是jq对象【这属于个人习惯，可以不参考】，cache是说jquery的this是指代上下文，上下文变换的时候，this就找不到了</p>
+
+<p>比如</p>
+<div class="highlight"><pre><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// this 1</span>
+    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tab_header li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;mouseover&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tab_header li&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+
+        <span class="c1">// this 2</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tab_content div&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tab_content div&#39;</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">index</span><span class="p">()).</span><span class="nx">show</span><span class="p">();</span>
+    <span class="p">})</span>      
+<span class="p">});</span>
+<span class="c1">// each end</span>
+</pre></div>
+<p>比较this1和this2的用法，如果之前没有定义obj，在事件回调函数里再想调用$(&#39;.tab&#39;)容器就非常麻烦了</p>
+
+<p>此处的缓存主要是为了后面调用方便</p>
+
+<h3>selector和$.fn</h3>
+
+<p>插件的定义是</p>
+<div class="highlight"><pre><span class="nv">$.fn</span>.<span class="n">tab</span> = <span class="n">function</span>(<span class="n">options</span>){
+    <span class="k">return</span> <span class="n">this</span>.<span class="nb">each</span>(<span class="n">function</span>(){
+        ...
+    });
+}
+</pre></div>
+<p>插件的用法是</p>
+<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="err">&#39;</span><span class="p">.</span><span class="n">tab</span><span class="err">&#39;</span><span class="p">).</span><span class="n">tab</span><span class="p">({</span>
+    <span class="n">config</span><span class="p">....</span>
+<span class="p">});</span>
+</pre></div>
+<p>这样对比很容易得出</p>
+
+<p>$.fn其实就是jQuery的selector对象，给此对象增加的方法而已。</p>
 
 <h3>调用方式</h3>
 <div class="highlight"><pre><span class="nt">&lt;script&gt;</span>
@@ -542,7 +581,7 @@
 <p>解读：</p>
 
 <ul>
-<li>有默认项，是约定大约配置，让用户用的时候如果没有个性化需求，可以很简单，安装插件的默认配置走，如果有个性化需求，修改配置项，同样很简单</li>
+<li>有默认项，是约定大于配置，让用户用的时候如果没有个性化需求，可以很简单，安装插件的默认配置走，如果有个性化需求，修改配置项，同样很简单</li>
 <li>基于selector意味着你可以复用，给tag或class应用此插件，以便写更少代码，完成更多功能</li>
 </ul>
 

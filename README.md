@@ -47,4 +47,4 @@ then open build/jquery.plugin.html
 
 ## License
 
-this gem is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+this project is released under the [MIT License](http://www.opensource.org/licenses/MIT).

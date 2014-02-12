@@ -356,9 +356,49 @@ v2的js只是根据tab的骨架接口修改而进行了简单修改，主要是d
 	// 将defaults 和 options 参数合并到{}
 	var obj = $(this);
 
-### select和$.fn
+给每个对象增加$(obj)属于防御性写法，保证对象一定是jq对象【这属于个人习惯，可以不参考】，cache是说jquery的this是指代上下文，上下文变换的时候，this就找不到了
 
+比如
 
+	return this.each(function() {
+		// this 1
+		var obj = $(this);
+
+		$(obj).find('.tab_header li').on('mouseover', function (){
+			$(obj).find('.tab_header li').removeClass('active');
+			
+			// this 2
+			$(this).addClass('active');
+
+			$(obj).find('.tab_content div').hide();
+			$(obj).find('.tab_content div').eq($(this).index()).show();
+		})		
+	});
+	// each end
+
+比较this1和this2的用法，如果之前没有定义obj，在事件回调函数里再想调用$('.tab')容器就非常麻烦了
+
+此处的缓存主要是为了后面调用方便
+
+### selector和$.fn
+
+插件的定义是
+
+	$.fn.tab = function(options){
+		return this.each(function(){
+			...
+		});
+	}
+
+插件的用法是
+	
+	$('.tab').tab({
+		config....
+	});
+
+这样对比很容易得出
+
+$.fn其实就是jQuery的selector对象，给此对象增加的方法而已。
 
 ### 调用方式
 
@@ -410,7 +450,7 @@ v2的js只是根据tab的骨架接口修改而进行了简单修改，主要是d
 
 解读：
 
-- 有默认项，是约定大约配置，让用户用的时候如果没有个性化需求，可以很简单，安装插件的默认配置走，如果有个性化需求，修改配置项，同样很简单
+- 有默认项，是约定大于配置，让用户用的时候如果没有个性化需求，可以很简单，安装插件的默认配置走，如果有个性化需求，修改配置项，同样很简单
 - 基于selector意味着你可以复用，给tag或class应用此插件，以便写更少代码，完成更多功能
 
 
