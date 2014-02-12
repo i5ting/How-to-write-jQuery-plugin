@@ -440,10 +440,53 @@
 
 <p>是不是很简单？</p>
 
-<h3>解释一下配置项</h3>
+<h3>配置项</h3>
 <div class="highlight"><pre>// 将<span class="n">defaults</span> 和 <span class="n">options</span> 参数合并到{}
 <span class="n">var</span> <span class="n">opts</span> = <span class="nv">$.extend</span>({},<span class="nv">$.fn</span>.<span class="n">tab</span>.<span class="n">defaults</span>,<span class="n">options</span>);
 </pre></div>
+<p>上面的代码是大家会100%疑问的地方，在此做一个简要说明</p>
+
+<p>首页要区分清楚</p>
+
+<ul>
+<li>options是调用插件的时候传入的参数</li>
+<li>$.fn.tab.defaults是一个写死的plain object</li>
+<li>{}是一个写死的plain object</li>
+</ul>
+
+<p>那么$.extend方法是jQuery的方法，它是用于属性或者方法合并的，也就是说options和$.fn.tab.defaults先合并，合并的时候已后面的options为主，如果</p>
+<div class="highlight"><pre><span class="nv">$.fn</span>.<span class="n">tab</span>.<span class="n">defaults</span>={
+    <span class="n">a</span> : <span class="mi">0</span>
+}
+</pre></div>
+<p>而options的是
+    $(&#39;.tab&#39;).tab({
+        a : 1
+    });</p>
+
+<p>那么合并的结果将是a = 1，即以后面的为主</p>
+
+<p>如果options里没有b，而$.fn.tab.defaults里有b配置呢</p>
+<div class="highlight"><pre><span class="nv">$.fn</span>.<span class="n">tab</span>.<span class="n">defaults</span>={
+    <span class="n">a</span> : <span class="mi">0</span>,
+    <span class="n">b</span> : <span class="nb">true</span>
+}
+</pre></div>
+<p>那么合并的结果将是</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="n">a</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">b</span> <span class="o">:</span> <span class="nb">true</span>
+<span class="p">}</span>
+</pre></div>
+<p>如果后面没有前面有，此值就是前面的值，即插件的默认项</p>
+
+<p>只有最前面的</p>
+<div class="highlight"><pre><span class="n">opts</span> = <span class="nv">$.extend</span>({},***)
+</pre></div>
+<p>这是是一种防御性写法，保证返回的opts一定是一个plain object，仅此而已。</p>
+
+<p>大家一定要记住，插件是以默认配置项为主，配置项是作为私人定制的高级需求用的。力求通用的同时，也要考虑足够的可扩展性，后面章节讲配置项的时候会详细说明。</p>
+
 <h3>缓存this</h3>
 <div class="highlight"><pre><span class="c1">// 将defaults 和 options 参数合并到{}</span>
 <span class="k">var</span> <span class="n">obj</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>

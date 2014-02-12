@@ -301,10 +301,55 @@ v2的js只是根据tab的骨架接口修改而进行了简单修改，主要是d
 
 是不是很简单？
 
-### 解释一下配置项
+### 配置项
 
 	// 将defaults 和 options 参数合并到{}
 	var opts = $.extend({},$.fn.tab.defaults,options);
+	
+上面的代码是大家会100%疑问的地方，在此做一个简要说明
+
+首页要区分清楚
+
+- options是调用插件的时候传入的参数
+- $.fn.tab.defaults是一个写死的plain object
+- {}是一个写死的plain object
+
+那么$.extend方法是jQuery的方法，它是用于属性或者方法合并的，也就是说options和$.fn.tab.defaults先合并，合并的时候已后面的options为主，如果
+
+	$.fn.tab.defaults={
+		a : 0
+	}
+	
+而options的是
+	$('.tab').tab({
+		a : 1
+	});
+	
+那么合并的结果将是a = 1，即以后面的为主
+
+如果options里没有b，而$.fn.tab.defaults里有b配置呢
+
+	$.fn.tab.defaults={
+		a : 0,
+		b : true
+	}
+	
+那么合并的结果将是
+
+	{
+		a : 1,
+		b : true
+	}
+
+如果后面没有前面有，此值就是前面的值，即插件的默认项
+
+只有最前面的
+	
+	opts = $.extend({},***)
+
+这是是一种防御性写法，保证返回的opts一定是一个plain object，仅此而已。
+
+大家一定要记住，插件是以默认配置项为主，配置项是作为私人定制的高级需求用的。力求通用的同时，也要考虑足够的可扩展性，后面章节讲配置项的时候会详细说明。
 	
 ### 缓存this
 
