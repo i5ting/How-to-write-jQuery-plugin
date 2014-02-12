@@ -1,0 +1,6 @@
+# Logfile created on 2014-02-13 07:44:25 +0800 by logger.rb/44203
+I, [2014-02-13T07:44:25.976753 #11452]  INFO -- : 0:  posix-spawn (0.3.8) from /Users/sang/.rvm/gems/ruby-2.1.0@rails4.0/specifications/posix-spawn-0.3.8.gemspec
+I, [2014-02-13T07:44:25.977449 #11452]  INFO -- : 0:  yajl-ruby (1.1.0) from /Users/sang/.rvm/gems/ruby-2.1.0@rails4.0/specifications/yajl-ruby-1.1.0.gemspec
+I, [2014-02-13T07:44:25.983784 #11452]  INFO -- : 0:  pygments.rb (0.5.4) from /Users/sang/.rvm/gems/ruby-2.1.0@rails4.0/specifications/pygments.rb-0.5.4.gemspec
+I, [2014-02-13T07:44:25.984411 #11452]  INFO -- : 0:  redcarpet (3.0.0) from /Users/sang/.rvm/gems/ruby-2.1.0@rails4.0/specifications/redcarpet-3.0.0.gemspec
+I, [2014-02-13T07:44:25.984745 #11452]  INFO -- : 0:  bundler (1.5.1) from /Users/sang/.rvm/gems/ruby-2.1.0@global/specifications/bundler-1.5.1.gemspec
